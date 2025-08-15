@@ -23,6 +23,7 @@ func main() {
 		return c.Status(200).JSON(fiber.Map{"msg": "My get Route is running"})
 	})
 
+	// create a todo
 	app.Post("/api/todos", func(c *fiber.Ctx) error {
 		todo := &Todo{}
 
@@ -37,7 +38,24 @@ func main() {
 		todo.ID = len(todos) + 1
 		todos = append(todos, *todo)
 
-		return c.Status(200).JSON(todo)
+		return c.Status(201).JSON(todo)
+	})
+
+	//update a todo
+	app.Patch("/api/todos/:id", func(c *fiber.Ctx) error {
+		id := c.Params("id")
+
+		for i, todo := range todos {
+			if fmt.Sprint(todo.ID) == id {
+				todos[i].Completed = true
+				return c.Status(200).JSON(fiber.Map{
+					"Message": "Todo has been updated",
+					"todo":    todos[i],
+				})
+			}
+		}
+
+		return c.Status(404).JSON(fiber.Map{"error": "Todo not found"})
 	})
 
 	log.Fatal(app.Listen(":4000"))
