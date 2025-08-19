@@ -1,14 +1,16 @@
-import { HStack,  Button } from '@chakra-ui/react'
+import { HStack,  Button, Stack, Container } from '@chakra-ui/react'
 
 function App() {
 
   return (
-    <>
-     <HStack>
-      <Button>Click me</Button>
-      <Button>Click me</Button>
-    </HStack>
-    </>
+    <Stack h="100vh">
+      {/* <Navbar></Navbar>
+      <Container>
+        <TodoForm/>
+        <TodoList/>
+      </Container> */}
+      <p>Hello</p>
+    </Stack>
   )
 }
 
