@@ -1,15 +1,17 @@
 import { HStack,  Button, Stack, Container } from '@chakra-ui/react'
+import Navbar from './components/Navbar'
+import TodoForm from './components/TodoForm'
 
 function App() {
 
   return (
     <Stack h="100vh">
-      {/* <Navbar></Navbar>
+      <Navbar></Navbar>
       <Container>
         <TodoForm/>
-        <TodoList/>
-      </Container> */}
-      <p>Hello</p>
+        {/* 
+        <TodoList/> */}
+      </Container>
     </Stack>
   )
 }
