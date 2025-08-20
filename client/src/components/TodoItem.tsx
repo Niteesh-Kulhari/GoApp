@@ -1,8 +1,9 @@
 import { Badge, Box, Flex, Text } from "@chakra-ui/react";
 import { FaCheckCircle } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+import type { Todo } from "./TodoList";
 
-export default function TodoItem({todo} : {todo: any}) {
+export default function TodoItem({todo} : {todo: Todo}) {
     return (
 		<Flex gap={2} alignItems={"center"}>
 			<Flex
