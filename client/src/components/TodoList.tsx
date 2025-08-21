@@ -10,12 +10,7 @@ export type Todo = {
 
 export default function TodoList() {
 
-	const {mutate: updateTodo, isPending: isUpdating} =useMutation({
-		mutationKey: ["updateTodo"],
-		mutationFn: async () => {
-			if(todos.completed) return alert("Todo is already Completed")
-		}
-	}) 
+	
 
 	const {data: todos, isLoading} = useQuery<Todo[]>({
 		queryKey:["todos"],
