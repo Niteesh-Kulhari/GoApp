@@ -1,6 +1,6 @@
 import { Flex, Spinner, Stack, Text } from "@chakra-ui/react";
 import TodoItem from "./TodoItem";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 
 export type Todo = {
 	_id: number
@@ -9,6 +9,14 @@ export type Todo = {
 }
 
 export default function TodoList() {
+
+	const {mutate: updateTodo, isPending: isUpdating} =useMutation({
+		mutationKey: ["updateTodo"],
+		mutationFn: async () => {
+			if(todos.completed) return alert("Todo is already Completed")
+		}
+	}) 
+
 	const {data: todos, isLoading} = useQuery<Todo[]>({
 		queryKey:["todos"],
 		queryFn: async () => {
